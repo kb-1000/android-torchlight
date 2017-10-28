@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Taschenlampe</string>
+    <string name="action_settings">Einstellungen</string>
+    <string name="navigation_drawer_close">Menü öffnen</string>
+    <string name="navigation_drawer_open">Menü schließen</string>
+    <string name="logo">Logo</string>
+    <string name="exit">Beenden</string>
+    <string name="auto_flash">Licht</string>
+    <string name="perm_info_text">Die Taschenlampe benötigt die Kameraberechtigung, weil der Blitz zur Kamera gehört.</string>
+    <string name="no_camera">Fehler: Gerät hat keine Kamera!</string>
+    <string name="share">Teilen</string>
+    <string name="send">Senden</string>
+    <string name="communicate">Rückmeldung</string>
+    <string name="torchlight_is_off">Taschenlampe ist AUS</string>
+    <string name="off">AUS</string>
+    <string name="on">AN</string>
+    <string name="torchlight_is_on">Taschenlampe ist AN</string>
+</resources>
