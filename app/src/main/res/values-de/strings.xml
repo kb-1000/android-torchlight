@@ -13,7 +13,5 @@
     <string name="send">Senden</string>
     <string name="communicate">Rückmeldung</string>
     <string name="torchlight_is_off">Taschenlampe ist AUS</string>
-    <string name="off">AUS</string>
-    <string name="on">AN</string>
     <string name="torchlight_is_on">Taschenlampe ist AN</string>
 </resources>

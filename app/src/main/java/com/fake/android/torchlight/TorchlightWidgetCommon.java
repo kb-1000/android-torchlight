@@ -1,5 +1,6 @@
 package com.fake.android.torchlight;
 
+import android.annotation.SuppressLint;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
@@ -19,6 +20,7 @@ class TorchlightWidgetCommon {
     private TorchlightWidgetCommon() {
     }
 
+    @SuppressLint("PrivateResource")
     static private void updateOne(Context context, AppWidgetManager appWidgetManager,
                                   int appWidgetId) {
 
@@ -28,8 +30,8 @@ class TorchlightWidgetCommon {
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.torchlight_widget);
 
-        views.setTextViewText(R.id.appwidget_text, context.getString(enabled ? R.string.on : R.string.off));
-        views.setContentDescription(R.id.appwidget_text, context.getString(enabled ? R.string.on : R.string.off));
+        views.setTextViewText(R.id.appwidget_text, context.getString(enabled ? R.string.abc_capital_on : R.string.abc_capital_off));
+        views.setContentDescription(R.id.appwidget_text, context.getString(enabled ? R.string.abc_capital_on : R.string.abc_capital_off));
         views.setImageViewResource(R.id.imageButton, enabled ? R.drawable.ic_sunny_white : R.drawable.ic_sunny_black);
         views.setContentDescription(R.id.imageButton, context.getString(enabled ? R.string.torchlight_is_on : R.string.torchlight_is_off));
         views.setOnClickPendingIntent(R.id.imageButton, PendingIntent.getBroadcast(context, 0, new Intent(context, ToggleReceiver.class), 0));

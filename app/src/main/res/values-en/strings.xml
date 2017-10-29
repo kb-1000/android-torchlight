@@ -13,7 +13,5 @@
     <string name="send">Send</string>
     <string name="communicate">Feedback</string>
     <string name="torchlight_is_off">Torchlight is OFF</string>
-    <string name="off">OFF</string>
-    <string name="on">ON</string>
     <string name="torchlight_is_on">Torchlight is ON</string>
 </resources>

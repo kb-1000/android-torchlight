@@ -1,5 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#09C"
@@ -15,10 +16,11 @@
         android:background="#09C"
         android:contentDescription="@string/torchlight_is_off"
         android:gravity="center"
-        android:text="@string/off"
+        android:text="@string/abc_capital_off"
         android:textColor="#ffffff"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        tools:ignore="PrivateResource" />
 
     <ImageButton
         android:id="@+id/imageButton"
