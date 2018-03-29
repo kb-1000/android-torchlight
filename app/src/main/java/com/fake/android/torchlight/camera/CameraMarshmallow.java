@@ -23,6 +23,7 @@ class CameraMarshmallow extends Camera {
         mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
 
         try {
+            assert mCameraManager != null;
             String[] list = mCameraManager.getCameraIdList();
             mCameraID = list[0];
         } catch (CameraAccessException e) {
@@ -45,7 +46,7 @@ class CameraMarshmallow extends Camera {
     @TargetApi(Build.VERSION_CODES.M)
     protected void toggle(boolean enable) {
         if (invalid) {
-            Toast.makeText(mContext, invalidityErrorString, Toast.LENGTH_LONG);
+            Toast.makeText(mContext, invalidityErrorString, Toast.LENGTH_LONG).show();
             CameraControl.noFlash();
             return;
         }

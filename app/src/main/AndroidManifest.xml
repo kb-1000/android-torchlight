@@ -57,6 +57,15 @@
                 android:name="android.appwidget.provider"
                 android:resource="@xml/torchlight_widget_info" />
         </receiver>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/action_settings"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.fake.android.torchlight.MainActivity" />
+        </activity>
     </application>
 
 </manifest>

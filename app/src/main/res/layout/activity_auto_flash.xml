@@ -19,6 +19,7 @@
         android:onClick="finish"
         android:text="@string/exit"
         android:textColor="@color/colorPrimaryDark"
+        android:focusable="true"
         android:textSize="36sp" />
 
 </FrameLayout>

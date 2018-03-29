@@ -54,6 +54,8 @@ class CameraNormal extends com.fake.android.torchlight.camera.Camera {
                 CameraControl.noFlash();
             }
             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
+            mCamera.stopPreview();
+            return;
         }
         if (enable) {
             mCamera.startPreview();

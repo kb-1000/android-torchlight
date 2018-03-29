@@ -14,4 +14,10 @@
     <string name="communicate">Rückmeldung</string>
     <string name="torchlight_is_off">Taschenlampe ist AUS</string>
     <string name="torchlight_is_on">Taschenlampe ist AN</string>
+    <string name="pref_title_information_version">Version</string>
+    <string name="pref_header_information">Information</string>
+    <string name="pref_information_app_description">Dies ist eine privatsphärenfreundliche App, um den Blitz der Kamera als Licht zu verwenden.
+        &#xa;Sie ist privatsphärenfreundlich, weil sie nur die Berechtigungen hat, die sie wirklich braucht:
+        &#xa;Der Blitz gehört zur Kamera, also brauchen wir diese Berechtigung.
+        &#xa;Die Fotolicht-Berechtigung brauchen wir, um den Kamerazugriff zum zugreifen auf den Blitz zu benutzen.</string>
 </resources>

@@ -16,7 +16,10 @@ public abstract class Camera {
     }
 
     public void set(boolean enabled) {
-        this.enabled = enabled;
         this.toggle(enabled);
+        this.enabled = enabled;
+        if (!CameraControl.hasFlash()) {
+            this.enabled = false;
+        }
     }
 }
