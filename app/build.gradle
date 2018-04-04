@@ -31,7 +31,7 @@ android {
             debuggable true
             jniDebuggable true
             renderscriptDebuggable true
-            minifyEnabled true
+            minifyEnabled false
             zipAlignEnabled true
         }
     }
