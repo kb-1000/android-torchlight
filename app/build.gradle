@@ -5,12 +5,12 @@ android {
         defaultConfig {
         }
     }
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion versions.androidSdk
+    buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "com.fake.android.torchlight"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion versions.androidSdk
         versionCode 205
         versionName "0.02b5"
         vectorDrawables {
@@ -39,8 +39,8 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile 'com.android.support:appcompat-v7:25.1.0'
-    compile 'com.android.support:design:25.1.0'
-    compile 'com.android.support:support-v4:25.1.0'
-    compile 'com.android.support:support-vector-drawable:25.1.0'
+    compile "com.android.support:appcompat-v7:$versions.androidSupport"
+    compile "com.android.support:design:$versions.androidSupport"
+    compile "com.android.support:support-v4:$versions.androidSupport"
+    compile "com.android.support:support-vector-drawable:$versions.androidSupport"
 }
