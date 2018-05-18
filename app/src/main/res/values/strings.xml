@@ -6,7 +6,7 @@
 
     <string name="action_settings">Settings</string>
     <string name="logo">Logo</string>
-    <string name="company_name" translatable="false">Fake</string>
+    <string name="company_name" translatable="false">Kaeptm Blaubaer</string>
     <string name="exit">Exit</string>
     <string name="auto_flash">Light</string>
     <string name="perm_info_text">The flashlight requires the camera permission, because the flash belongs to the camera.</string>
