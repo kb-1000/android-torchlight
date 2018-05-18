@@ -1,6 +1,7 @@
 package com.fake.android.torchlight;
 
 import android.Manifest;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -154,7 +155,14 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, SettingsActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_share) {
-            Intent intent = new Intent("", Uri.fromFile(new File(MainActivity.this.getApplicationInfo().name)));
+            try {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(new File(MainActivity.this.getApplicationInfo().sourceDir)));
+                intent.setType("application/vnd.android.package-archive");
+                startActivity(Intent.createChooser(intent, getString(R.string.share)));
+            } catch (ActivityNotFoundException e) {
+                Common.toast(this, R.string.error_no_share_app);
+            }
         } else if (id == R.id.nav_send) {
 
         }

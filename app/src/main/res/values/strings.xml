@@ -16,6 +16,7 @@
     <string name="send">Send</string>
     <string name="torchlight_is_off">Torchlight is OFF</string>
     <string name="torchlight_is_on">Torchlight is ON</string>
+    <string name="error_no_share_app">You don\'t have an app that accepts this share.</string>
 
     <!-- Strings related to Settings -->
 

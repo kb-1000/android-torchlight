@@ -20,4 +20,5 @@
         &#xa;Sie ist privatsphärenfreundlich, weil sie nur die Berechtigungen hat, die sie wirklich braucht:
         &#xa;Der Blitz gehört zur Kamera, also brauchen wir diese Berechtigung.
         &#xa;Die Fotolicht-Berechtigung brauchen wir, um den Kamerazugriff zum zugreifen auf den Blitz zu benutzen.</string>
+    <string name="error_no_share_app">Es ist keine App installiert, die zum Teilen der App-Datei geeignet ist.</string>
 </resources>
