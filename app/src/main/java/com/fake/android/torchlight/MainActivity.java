@@ -145,7 +145,6 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
-    @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
@@ -163,8 +162,9 @@ public class MainActivity extends AppCompatActivity
             } catch (ActivityNotFoundException e) {
                 Common.toast(this, R.string.error_no_share_app);
             }
-        } else if (id == R.id.nav_send) {
-
+        } else if (id == R.id.nav_send_github) {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(getString(R.string.github_issue_url)));
+            startActivity(intent);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

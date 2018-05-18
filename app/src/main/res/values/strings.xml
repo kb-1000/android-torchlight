@@ -11,12 +11,13 @@
     <string name="auto_flash">Light</string>
     <string name="perm_info_text">The flashlight requires the camera permission, because the flash belongs to the camera.</string>
     <string name="no_camera">Error: device has no camera!</string>
-    <string name="communicate">Feedback</string>
+    <string name="feedback">Feedback</string>
     <string name="share">Share</string>
-    <string name="send">Send</string>
+    <string name="send_github">Send to GitHub</string>
     <string name="torchlight_is_off">Torchlight is OFF</string>
     <string name="torchlight_is_on">Torchlight is ON</string>
     <string name="error_no_share_app">You don\'t have an app that accepts this share.</string>
+    <string name="github_issue_url">https://github.com/kaeptmblaubaer1000/android-torchlight/issues/new</string>
 
     <!-- Strings related to Settings -->
 

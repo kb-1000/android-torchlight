@@ -10,8 +10,8 @@
     <string name="perm_info_text">Die Taschenlampe benötigt die Kameraberechtigung, weil der Blitz zur Kamera gehört.</string>
     <string name="no_camera">Fehler: Gerät hat keine Kamera!</string>
     <string name="share">Teilen</string>
-    <string name="send">Senden</string>
-    <string name="communicate">Rückmeldung</string>
+    <string name="send_github">Feedback zu GitHub senden</string>
+    <string name="feedback">Rückmeldung</string>
     <string name="torchlight_is_off">Taschenlampe ist AUS</string>
     <string name="torchlight_is_on">Taschenlampe ist AN</string>
     <string name="pref_title_information_version">Version</string>
