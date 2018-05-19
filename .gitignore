@@ -49,6 +49,8 @@ hs_err_pid*
 ## Code style
 !.idea/codeStyles/
 
+## Dependencies
+!.idea/externalDependencies.xml
 
 # ---> Gradle
 ## Gradle wrapper jar file (.jar files are usually ignored)
