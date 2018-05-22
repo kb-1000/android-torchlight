@@ -12,8 +12,8 @@ android {
         applicationId "com.fake.android.torchlight"
         minSdkVersion 16
         targetSdkVersion versions.androidSdk
-        versionCode 206
-        versionName "2.6"
+        versionCode 207
+        versionName "2.7"
         vectorDrawables {
             useSupportLibrary true
         }
