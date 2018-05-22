@@ -2,8 +2,7 @@
 
     <!-- These settings headers are only used on tablets. -->
 
-    <header
-        android:fragment="com.fake.android.torchlight.SettingsActivity$InformationPreferenceFragment"
+    <header android:fragment="com.fake.android.torchlight.SettingsActivity$InformationPreferenceFragment"
         android:icon="@drawable/ic_info_black_24dp"
         android:title="@string/pref_header_information" />
 </preference-headers>

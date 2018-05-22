@@ -7,13 +7,11 @@
     android:fitsSystemWindows="true"
     tools:context="com.fake.android.torchlight.MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:layout_width="match_parent"
+    <android.support.design.widget.AppBarLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
+        <android.support.v7.widget.Toolbar android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
@@ -23,17 +21,14 @@
 
     <include layout="@layout/content_main" />
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
+    <android.support.design.widget.FloatingActionButton android:id="@+id/fab"
         android:layout_width="250dp"
         android:layout_height="250dp"
         android:layout_gravity="center"
         android:layout_margin="@dimen/fab_margin"
         app:srcCompat="@drawable/ic_sunny_black" />
 
-    <TextView
-        android:id="@+id/perm_info_text"
+    <TextView android:id="@+id/perm_info_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-
 </android.support.design.widget.CoordinatorLayout>

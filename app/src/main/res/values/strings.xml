@@ -9,7 +9,9 @@
     <string name="company_name" translatable="false">Kaeptm Blaubaer</string>
     <string name="exit">Exit</string>
     <string name="auto_flash">Light</string>
-    <string name="perm_info_text">The flashlight requires the camera permission, because the flash belongs to the camera.</string>
+    <string name="perm_info_text">The flashlight requires the camera permission, because the flash belongs to the
+        camera.
+    </string>
     <string name="no_camera">Error: device has no camera!</string>
     <string name="feedback">Feedback</string>
     <string name="share">Share</string>
@@ -17,15 +19,19 @@
     <string name="torchlight_is_off">Torchlight is OFF</string>
     <string name="torchlight_is_on">Torchlight is ON</string>
     <string name="error_no_share_app">You don\'t have an app that accepts this share.</string>
-    <string name="github_issue_url" translatable="false">https://github.com/kaeptmblaubaer1000/android-torchlight/issues/new</string>
+    <string name="github_issue_url" translatable="false">
+        https://github.com/kaeptmblaubaer1000/android-torchlight/issues/new
+    </string>
 
     <!-- Strings related to Settings -->
 
     <!-- Example General settings -->
     <string name="pref_header_information">Information</string>
     <string name="pref_title_information_version">Version</string>
-    <string name="pref_information_app_description">This app is a privacy-friendly app to utilize the flash of the camera for a light.
-        &#xa;It is privacy friendly, because it only has the permission it really needs:
-        &#xa;The flash is for the camera so we need this permission.
-        &#xa;The flashlight permission is needed to access the flash via the camera access.</string>
+    <!-- @formatter:off -->
+    <string name="pref_information_app_description">"This app is a privacy-friendly app to utilize the flash of the camera for a light.
+It is privacy friendly, because it only has the permission it really needs:
+The flash is for the camera so we need this permission.
+The flashlight permission is needed to access the flash via the camera access."</string>
+    <!-- @formatter:on -->
 </resources>
