@@ -22,11 +22,13 @@ import android.view.View;
 import android.widget.TextView;
 import com.fake.android.torchlight.camera.Camera;
 import com.fake.android.torchlight.camera.CameraControl;
+import timber.log.Timber;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, ActivityCompat.OnRequestPermissionsResultCallback {
     @SuppressWarnings("FieldCanBeLocal")
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     private FloatingActionButton fab;
@@ -40,26 +42,24 @@ public class MainActivity extends AppCompatActivity
         camera = null;
     }
 
-    private void requestPerm() {
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (permissions.length != 1 || permissions[0].equals(Manifest.permission.CAMERA)) {
+            Timber.e("Unknown permissions were requested: %s", Arrays.toString(permissions));
+        }
+    }
+
+    private boolean requestPerm() {
         if (ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA)
                 != PackageManager.PERMISSION_GRANTED) {
-
-
-            // No explanation needed, we can request the permission.
-
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.CAMERA},
                     MY_PERMISSIONS_REQUEST_CAMERA);
-
-            // MY_PERMISSIONS_REQUEST_CAMERA is an
-            // app-defined int constant. The callback method gets the
-            // result of the request.
-
+            return true;
         }
-        ContextCompat.checkSelfPermission(this,
-                Manifest.permission.CAMERA)/*
-                == PackageManager.PERMISSION_GRANTED*/;
+        return false;
     }
 
     @Override
@@ -81,7 +81,9 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if (CameraControl.hasFlash()) {
-                    requestPerm();
+                    if (requestPerm()) {
+                        return;
+                    }
                     camera.set(!camera.get());
                 }
                 if (!CameraControl.hasFlash()) {

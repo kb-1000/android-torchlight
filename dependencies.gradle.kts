@@ -3,6 +3,7 @@ object versions {
     const val gradle = "4.5.1"
     const val androidSupport = "27.1.1"
     const val androidSdk = 27
+    const val timber = "4.7.0"
 }
 
 extra["versions"] = versions
