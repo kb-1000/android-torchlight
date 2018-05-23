@@ -20,7 +20,7 @@
     <string name="torchlight_is_on">Torchlight is ON</string>
     <string name="error_no_share_app">You don\'t have an app that accepts this share.</string>
     <string name="github_issue_url" translatable="false">
-        https://github.com/kaeptmblaubaer1000/android-torchlight/issues/new
+        https://github.com/kaeptmblaubaer1000/android-torchlight/issues/new/choose
     </string>
 
     <!-- Strings related to Settings -->
