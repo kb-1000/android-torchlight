@@ -19,7 +19,7 @@ public class CameraControl {
             if (sdk > 23) {
                 instance = new CameraMarshmallow();
             } else {
-                instance = new CameraNormal();
+                instance = new CameraOld();
             }
             instance.init(context);
         }

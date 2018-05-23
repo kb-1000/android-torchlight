@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
 @SuppressLint("deprecation")
-class CameraNormal extends com.fake.android.torchlight.camera.Camera {
+class CameraOld extends com.fake.android.torchlight.camera.Camera {
     private Camera mCamera;
     private Camera.Parameters mCameraParams;
     private Context mContext;
