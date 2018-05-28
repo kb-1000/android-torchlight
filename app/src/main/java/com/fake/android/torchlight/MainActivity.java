@@ -32,14 +32,14 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("FieldCanBeLocal")
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     private FloatingActionButton fab;
-    private Torchlight camera;
+    private Torchlight torchlight;
     private DrawerLayout drawer;
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        camera.release();
-        camera = null;
+        torchlight.release();
+        torchlight = null;
     }
 
     @Override
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        camera = TorchlightControl.getInstance(this);
+        torchlight = Common.blockingBind(this, TorchlightService.class, new Common.NullServiceDisconnectCallback());
         setContentView(R.layout.activity_main);
         if ((ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA)
@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity
                     if (requestPerm()) {
                         return;
                     }
-                    camera.set(!camera.get());
+                    torchlight.set(!torchlight.get());
                 }
                 if (!TorchlightControl.hasFlash()) {
                     Intent intent = new Intent(MainActivity.this, FlashActivity.class);
@@ -106,7 +106,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void updateImageButton() {
-        if (camera.get()) {
+        if (torchlight.get()) {
             fab.setImageResource(R.drawable.ic_sunny_white);
         } else {
             fab.setImageResource(R.drawable.ic_sunny_black);

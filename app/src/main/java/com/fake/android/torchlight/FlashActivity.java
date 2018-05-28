@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by kaeptmblaubaer1000 on 23.02.2017.
- * This Activity provides compatibility for devices without a flash.
+ * This {@link android.app.Activity} provides compatibility for devices without a flash.
  */
 public class FlashActivity extends AppCompatActivity {
     @Override
