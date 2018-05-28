@@ -2,9 +2,10 @@ package com.fake.android.torchlight.camera;
 
 import android.content.Context;
 import android.os.Build;
+import org.jetbrains.annotations.Contract;
 
 /**
- * Created by admin on 16.02.2017.
+ * Created by kaeptmblaubaer1000 on 16.02.2017.
  * Class to generalize Camera usage.
  */
 public class CameraControl {
@@ -13,7 +14,7 @@ public class CameraControl {
 
     private static Camera instance = null;
 
-    public static Camera getInstance(Context context) {
+    public static synchronized Camera getInstance(Context context) {
         if (instance == null) {
             int sdk = Build.VERSION.SDK_INT;
             if (sdk > 23) {
@@ -30,6 +31,7 @@ public class CameraControl {
         _hasFlash = false;
     }
 
+    @Contract(pure = true)
     public static boolean hasFlash() {
         return _hasFlash;
     }
