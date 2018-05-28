@@ -5,26 +5,26 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 
-import com.fake.android.torchlight.camera.Camera;
-import com.fake.android.torchlight.camera.CameraControl;
+import com.fake.android.torchlight.core.Torchlight;
+import com.fake.android.torchlight.core.TorchlightControl;
 
 public class AutoFlashActivity extends AppCompatActivity {
-    private Camera camera;
+    private Torchlight camera;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto_flash);
-        camera = CameraControl.getInstance(this);
+        camera = TorchlightControl.getInstance(this);
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (CameraControl.hasFlash()) {
+        if (TorchlightControl.hasFlash()) {
             camera.set(true);
         }
-        if (!CameraControl.hasFlash()) {
+        if (!TorchlightControl.hasFlash()) {
             final Intent intent = new Intent(this, FlashActivity.class);
             startActivityForResult(intent, 1);
         }
@@ -33,7 +33,7 @@ public class AutoFlashActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (CameraControl.hasFlash()) {
+        if (TorchlightControl.hasFlash()) {
             camera.set(false);
         }
     }

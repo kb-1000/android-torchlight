@@ -1,4 +1,4 @@
-package com.fake.android.torchlight.camera;
+package com.fake.android.torchlight.core;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 @SuppressWarnings("deprecation")
 @SuppressLint("deprecation")
-class CameraOld extends com.fake.android.torchlight.camera.Camera {
+class TorchlightOld extends Torchlight {
     private Camera mCamera;
     private Camera.Parameters mCameraParams;
     private Context mContext;
@@ -19,7 +19,7 @@ class CameraOld extends com.fake.android.torchlight.camera.Camera {
             mCamera = Camera.open();
             mCameraParams = mCamera.getParameters();
         } catch (RuntimeException e) {
-            CameraControl.noFlash();
+            TorchlightControl.noFlash();
             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
@@ -38,7 +38,7 @@ class CameraOld extends com.fake.android.torchlight.camera.Camera {
     }
 
     @Override
-    public void toggle(boolean enable) {
+    public void _set(boolean enable) {
         if (mCamera == null) {
             return;
         }
@@ -51,7 +51,7 @@ class CameraOld extends com.fake.android.torchlight.camera.Camera {
             mCamera.setParameters(mCameraParams);
         } catch (RuntimeException e) {
             if (e.getMessage().startsWith("set")) {
-                CameraControl.noFlash();
+                TorchlightControl.noFlash();
             }
             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
             mCamera.stopPreview();

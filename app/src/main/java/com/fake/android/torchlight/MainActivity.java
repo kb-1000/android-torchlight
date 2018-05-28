@@ -20,8 +20,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import com.fake.android.torchlight.camera.Camera;
-import com.fake.android.torchlight.camera.CameraControl;
+import com.fake.android.torchlight.core.Torchlight;
+import com.fake.android.torchlight.core.TorchlightControl;
 import timber.log.Timber;
 
 import java.io.File;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     @SuppressWarnings("FieldCanBeLocal")
     private final int MY_PERMISSIONS_REQUEST_CAMERA = 1;
     private FloatingActionButton fab;
-    private Camera camera;
+    private Torchlight camera;
     private DrawerLayout drawer;
 
     @Override
@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        camera = CameraControl.getInstance(this);
+        camera = TorchlightControl.getInstance(this);
         setContentView(R.layout.activity_main);
         if ((ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA)
@@ -80,13 +80,13 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (CameraControl.hasFlash()) {
+                if (TorchlightControl.hasFlash()) {
                     if (requestPerm()) {
                         return;
                     }
                     camera.set(!camera.get());
                 }
-                if (!CameraControl.hasFlash()) {
+                if (!TorchlightControl.hasFlash()) {
                     Intent intent = new Intent(MainActivity.this, FlashActivity.class);
                     startActivity(intent);
                 }

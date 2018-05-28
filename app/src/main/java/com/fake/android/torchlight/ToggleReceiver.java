@@ -6,16 +6,16 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 
-import com.fake.android.torchlight.camera.Camera;
-import com.fake.android.torchlight.camera.CameraControl;
+import com.fake.android.torchlight.core.Torchlight;
+import com.fake.android.torchlight.core.TorchlightControl;
 
 public class ToggleReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
-        Camera camera = CameraControl.getInstance(context);
-        if (CameraControl.isEnabled(context)) {
+        Torchlight camera = TorchlightControl.getInstance(context);
+        if (TorchlightControl.isEnabled(context)) {
             camera.set(false);
         } else {
             camera.set(true);

@@ -1,13 +1,13 @@
-package com.fake.android.torchlight.camera;
+package com.fake.android.torchlight.core;
 
 import com.fake.android.torchlight.v1.ITorchlight;
 import org.jetbrains.annotations.Contract;
 
 // TODO: Merge with {@link Camera}
 public final class TorchlightImpl extends ITorchlight.Stub implements ITorchlight {
-    private Camera torchlight;
+    private Torchlight torchlight;
 
-    public TorchlightImpl(Camera torchlight) {
+    public TorchlightImpl(Torchlight torchlight) {
         this.torchlight = torchlight;
     }
 
@@ -46,6 +46,6 @@ public final class TorchlightImpl extends ITorchlight.Stub implements ITorchligh
     @Contract(pure = true)
     @Override
     public boolean hasFlash() {
-        return CameraControl.hasFlash();
+        return TorchlightControl.hasFlash();
     }
 }

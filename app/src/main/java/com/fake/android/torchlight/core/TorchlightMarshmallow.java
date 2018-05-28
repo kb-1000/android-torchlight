@@ -1,4 +1,4 @@
-package com.fake.android.torchlight.camera;
+package com.fake.android.torchlight.core;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.widget.Toast;
 
 import com.fake.android.torchlight.R;
 
-class CameraMarshmallow extends Camera {
+class TorchlightMarshmallow extends Torchlight {
     private String mCameraID;
     private CameraManager mCameraManager;
     private Context mContext;
@@ -27,16 +27,16 @@ class CameraMarshmallow extends Camera {
             String[] list = mCameraManager.getCameraIdList();
             mCameraID = list[0];
         } catch (CameraAccessException e) {
-            CameraControl.noFlash();
+            TorchlightControl.noFlash();
             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
             invalid = true;
             invalidityErrorString = e.getMessage();
-            CameraControl.noFlash();
+            TorchlightControl.noFlash();
         } catch (IndexOutOfBoundsException e) {
             Toast.makeText(mContext, R.string.no_camera, Toast.LENGTH_LONG).show();
             invalid = true;
             invalidityErrorString = mContext.getString(R.string.no_camera);
-            CameraControl.noFlash();
+            TorchlightControl.noFlash();
         }
     }
 
@@ -44,16 +44,16 @@ class CameraMarshmallow extends Camera {
     }
 
     @TargetApi(Build.VERSION_CODES.M)
-    protected void toggle(boolean enable) {
+    protected void _set(boolean enable) {
         if (invalid) {
             Toast.makeText(mContext, invalidityErrorString, Toast.LENGTH_LONG).show();
-            CameraControl.noFlash();
+            TorchlightControl.noFlash();
             return;
         }
         try {
             mCameraManager.setTorchMode(mCameraID, enable);
         } catch (CameraAccessException e) {
-            CameraControl.noFlash();
+            TorchlightControl.noFlash();
             Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }

@@ -1,4 +1,4 @@
-package com.fake.android.torchlight.camera;
+package com.fake.android.torchlight.core;
 
 import android.content.Context;
 import android.os.Build;
@@ -8,19 +8,19 @@ import org.jetbrains.annotations.Contract;
  * Created by kaeptmblaubaer1000 on 16.02.2017.
  * Class to generalize Camera usage.
  */
-public class CameraControl {
+public class TorchlightControl {
 
     private static boolean _hasFlash = true;
 
-    private static Camera instance = null;
+    private static Torchlight instance = null;
 
-    public static synchronized Camera getInstance(Context context) {
+    public static synchronized Torchlight getInstance(Context context) {
         if (instance == null) {
             int sdk = Build.VERSION.SDK_INT;
             if (sdk > 23) {
-                instance = new CameraMarshmallow();
+                instance = new TorchlightMarshmallow();
             } else {
-                instance = new CameraOld();
+                instance = new TorchlightOld();
             }
             instance.init(context);
         }

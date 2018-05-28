@@ -7,8 +7,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-import com.fake.android.torchlight.camera.Camera;
-import com.fake.android.torchlight.camera.CameraControl;
+import com.fake.android.torchlight.core.Torchlight;
+import com.fake.android.torchlight.core.TorchlightControl;
 
 /**
  * Created by admin on 18.05.2017.
@@ -24,7 +24,7 @@ class TorchlightWidgetCommon {
     static private void updateOne(Context context, AppWidgetManager appWidgetManager,
                                   int appWidgetId) {
 
-        Camera camera = CameraControl.getInstance(context);
+        Torchlight camera = TorchlightControl.getInstance(context);
         boolean enabled = camera.get();
 
         // Construct the RemoteViews object
