@@ -51,7 +51,7 @@
                 android:value="com.fake.android.torchlight.MainActivity" />
         </activity>
 
-        <service android:name=".TorchlightService" android:enabled="true" android:exported="false"></service>
+        <service android:name=".TorchlightService" android:enabled="true" android:exported="false" />
     </application>
 
 </manifest>

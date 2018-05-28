@@ -22,8 +22,7 @@ public class TorchlightService extends Service {
 
     @NotNull
     private synchronized Torchlight getImpl() {
-        if(torchlight != null)
-        {
+        if (torchlight != null) {
             return torchlight;
         } else {
             return torchlight = TorchlightControl.getInstance(this);

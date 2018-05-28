@@ -5,7 +5,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 /**
- * Created by admin on 23.02.2017.
+ * Created by kaeptmblaubaer1000 on 23.02.2017.
  * This Activity provides compatibility for devices without a flash.
  */
 public class FlashActivity extends AppCompatActivity {

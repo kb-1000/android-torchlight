@@ -14,16 +14,16 @@ public abstract class Torchlight extends ITorchlight.Stub {
     protected abstract void _set(boolean enable);
 
     /**
-         * @return the current enabled state
-         */
+     * @return the current enabled state
+     */
     @Override
     public boolean get() {
         return enabled;
     }
 
     /**
-         * @param state the enabled state to set
-         */
+     * @param state the enabled state to set
+     */
     @Override
     public void set(boolean state) {
         this._set(state);

@@ -26,4 +26,3 @@ public class TorchlightWidget extends AppWidgetProvider {
         // Enter relevant functionality for when the last widget is disabled
     }
 }
-

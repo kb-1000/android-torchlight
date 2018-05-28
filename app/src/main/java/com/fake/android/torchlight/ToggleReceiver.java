@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-
 import com.fake.android.torchlight.core.Torchlight;
 import com.fake.android.torchlight.core.TorchlightControl;
 

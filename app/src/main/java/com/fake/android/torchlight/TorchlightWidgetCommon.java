@@ -11,7 +11,7 @@ import com.fake.android.torchlight.core.Torchlight;
 import com.fake.android.torchlight.core.TorchlightControl;
 
 /**
- * Created by admin on 18.05.2017.
+ * Created by kaeptmblaubaer1000 on 18.05.2017.
  * This is used to update the text of the widget.
  */
 

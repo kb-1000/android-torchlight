@@ -23,9 +23,9 @@ interface ITorchlight {
     boolean toggle();
 
     /**
-    * @return a flag if the app has detected that there is no flash in the camera
-    *
-    * This may be wrong if the flash was never turned on!
-    */
+     * @return a flag if the app has detected that there is no flash in the camera
+     * <p>
+     * This may be wrong if the flash was never turned on!
+     */
     boolean hasFlash();
 }

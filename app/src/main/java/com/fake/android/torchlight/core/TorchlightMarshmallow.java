@@ -6,7 +6,6 @@ import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.widget.Toast;
-
 import com.fake.android.torchlight.R;
 
 class TorchlightMarshmallow extends Torchlight {
