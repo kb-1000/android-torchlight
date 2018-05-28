@@ -12,8 +12,8 @@
 
     <application android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
-        android:roundIcon="@mipmap/ic_launcher_round"
         android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
@@ -50,6 +50,8 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.fake.android.torchlight.MainActivity" />
         </activity>
+
+        <service android:name=".TorchlightService" android:enabled="true" android:exported="false"></service>
     </application>
 
 </manifest>
