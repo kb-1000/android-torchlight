@@ -3,14 +3,14 @@ package com.fake.android.torchlight;
 import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
+import com.fake.android.torchlight.core.Torchlight;
 import com.fake.android.torchlight.core.TorchlightControl;
-import com.fake.android.torchlight.core.TorchlightImpl;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class TorchlightService extends Service {
     @Nullable
-    private TorchlightImpl torchlight;
+    private Torchlight torchlight;
 
     public TorchlightService() {
     }
@@ -21,12 +21,12 @@ public class TorchlightService extends Service {
     }
 
     @NotNull
-    private synchronized TorchlightImpl getImpl() {
+    private synchronized Torchlight getImpl() {
         if(torchlight != null)
         {
             return torchlight;
         } else {
-            return torchlight = new TorchlightImpl(TorchlightControl.getInstance(this));
+            return torchlight = TorchlightControl.getInstance(this);
         }
     }
 }
