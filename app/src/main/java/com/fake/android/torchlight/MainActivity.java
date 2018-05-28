@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        torchlight = Common.blockingBind(this, TorchlightService.class, new Common.NullServiceDisconnectCallback());
+        torchlight = Common.blockingTorchlightBind(this);
         setContentView(R.layout.activity_main);
         if ((ContextCompat.checkSelfPermission(this,
                 Manifest.permission.CAMERA)

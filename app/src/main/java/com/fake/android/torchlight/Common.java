@@ -8,6 +8,7 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.support.annotation.StringRes;
 import android.widget.Toast;
+import com.fake.android.torchlight.core.Torchlight;
 import timber.log.Timber;
 
 import java.util.concurrent.BrokenBarrierException;
@@ -52,6 +53,10 @@ final class Common {
 
         //noinspection unchecked
         return (T) serviceConnection.getService();
+    }
+
+    static Torchlight blockingTorchlightBind(Context context) {
+        return blockingBind(context, TorchlightService.class, new NullServiceDisconnectCallback());
     }
 
     public interface ServiceDisconnectCallback {
