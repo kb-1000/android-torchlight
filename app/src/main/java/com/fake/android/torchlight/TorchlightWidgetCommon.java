@@ -5,10 +5,10 @@ import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.RemoteException;
 import android.widget.RemoteViews;
-
-import com.fake.android.torchlight.core.Torchlight;
-import com.fake.android.torchlight.core.TorchlightControl;
+import com.fake.android.torchlight.v1.ITorchlight;
+import timber.log.Timber;
 
 /**
  * Created by kaeptmblaubaer1000 on 18.05.2017.
@@ -24,8 +24,14 @@ class TorchlightWidgetCommon {
     static private void updateOne(Context context, AppWidgetManager appWidgetManager,
                                   int appWidgetId) {
 
-        Torchlight camera = TorchlightControl.getInstance(context);
-        boolean enabled = camera.get();
+        ITorchlight camera = Common.blockingTorchlightBind(context);
+        boolean enabled;
+        try {
+            enabled = camera.get();
+        } catch (RemoteException e) {
+            Timber.e(e);
+            throw new RuntimeException(e);
+        }
 
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.torchlight_widget);

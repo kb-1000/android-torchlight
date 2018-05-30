@@ -10,22 +10,21 @@ import android.widget.Toast;
 class TorchlightOld extends Torchlight {
     private Camera mCamera;
     private Camera.Parameters mCameraParams;
-    private Context mContext;
 
     @Override
     public void init(Context context) {
-        mContext = context;
+        this.context = context;
         try {
             mCamera = Camera.open();
             mCameraParams = mCamera.getParameters();
         } catch (RuntimeException e) {
             TorchlightControl.noFlash();
-            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this.context, e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
     @Override
-    public void release() {
+    public void _release() {
         try {
             if (mCamera != null) {
                 mCamera.release();
@@ -33,7 +32,7 @@ class TorchlightOld extends Torchlight {
                 mCameraParams = null;
             }
         } catch (RuntimeException e) {
-            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -53,7 +52,7 @@ class TorchlightOld extends Torchlight {
             if (e.getMessage().startsWith("set")) {
                 TorchlightControl.noFlash();
             }
-            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
             mCamera.stopPreview();
             return;
         }

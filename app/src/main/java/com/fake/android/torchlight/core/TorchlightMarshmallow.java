@@ -8,18 +8,17 @@ import android.os.Build;
 import android.widget.Toast;
 import com.fake.android.torchlight.R;
 
+@TargetApi(Build.VERSION_CODES.M)
 class TorchlightMarshmallow extends Torchlight {
     private String mCameraID;
     private CameraManager mCameraManager;
-    private Context mContext;
     private boolean invalid = false;
     private String invalidityErrorString;
 
 
-    @TargetApi(Build.VERSION_CODES.M)
     public void init(Context context) {
-        mContext = context;
-        mCameraManager = (CameraManager) mContext.getSystemService(Context.CAMERA_SERVICE);
+        this.context = context;
+        mCameraManager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
 
         try {
             assert mCameraManager != null;
@@ -27,25 +26,25 @@ class TorchlightMarshmallow extends Torchlight {
             mCameraID = list[0];
         } catch (CameraAccessException e) {
             TorchlightControl.noFlash();
-            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
             invalid = true;
             invalidityErrorString = e.getMessage();
             TorchlightControl.noFlash();
         } catch (IndexOutOfBoundsException e) {
-            Toast.makeText(mContext, R.string.no_camera, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, R.string.no_camera, Toast.LENGTH_LONG).show();
             invalid = true;
-            invalidityErrorString = mContext.getString(R.string.no_camera);
+            invalidityErrorString = context.getString(R.string.no_camera);
             TorchlightControl.noFlash();
         }
     }
 
-    public void release() {
+    @Override
+    public void _release() {
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     protected void _set(boolean enable) {
         if (invalid) {
-            Toast.makeText(mContext, invalidityErrorString, Toast.LENGTH_LONG).show();
+            Toast.makeText(context, invalidityErrorString, Toast.LENGTH_LONG).show();
             TorchlightControl.noFlash();
             return;
         }
@@ -53,7 +52,7 @@ class TorchlightMarshmallow extends Torchlight {
             mCameraManager.setTorchMode(mCameraID, enable);
         } catch (CameraAccessException e) {
             TorchlightControl.noFlash();
-            Toast.makeText(mContext, e.getMessage(), Toast.LENGTH_LONG).show();
+            Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
         }
     }
 }

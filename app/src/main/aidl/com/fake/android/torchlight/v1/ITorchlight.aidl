@@ -28,4 +28,15 @@ interface ITorchlight {
      * This may be wrong if the flash was never turned on!
      */
     boolean hasFlash();
+
+    /**
+     * Increase the internal reference count of this object.
+     */
+    ITorchlight retain();
+
+    /**
+     * Decrease the internal reference count of this object.
+     * If this is zero and {@link .get} returns {@code false}, the object is low-level released and initialized again when using {@link #retain}, {@link #set} or {@link #toggle}.
+     */
+    void release();
 }

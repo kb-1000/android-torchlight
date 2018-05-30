@@ -2,26 +2,38 @@ package com.fake.android.torchlight;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import com.fake.android.torchlight.core.Torchlight;
 import com.fake.android.torchlight.core.TorchlightControl;
+import com.fake.android.torchlight.v1.ITorchlight;
+import timber.log.Timber;
 
 public class AutoFlashActivity extends AppCompatActivity {
-    private Torchlight camera;
+    private ITorchlight torchlight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auto_flash);
-        camera = TorchlightControl.getInstance(this);
+        try {
+            torchlight = Common.blockingTorchlightBind(this).retain();
+        } catch (RemoteException e) {
+            Timber.e(e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
         if (TorchlightControl.hasFlash()) {
-            camera.set(true);
+            try {
+                torchlight.set(true);
+            } catch (RemoteException e) {
+                Timber.e(e);
+                throw new RuntimeException(e);
+            }
         }
         if (!TorchlightControl.hasFlash()) {
             final Intent intent = new Intent(this, FlashActivity.class);
@@ -33,14 +45,24 @@ public class AutoFlashActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         if (TorchlightControl.hasFlash()) {
-            camera.set(false);
+            try {
+                torchlight.set(false);
+            } catch (RemoteException e) {
+                Timber.e(e);
+                throw new RuntimeException(e);
+            }
         }
     }
 
     @Override
     public void finish() {
         super.finish();
-        camera.release();
+        try {
+            torchlight.release();
+        } catch (RemoteException e) {
+            Timber.e(e);
+            throw new RuntimeException(e);
+        }
     }
 
     @Override

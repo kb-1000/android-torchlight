@@ -8,7 +8,7 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.support.annotation.StringRes;
 import android.widget.Toast;
-import com.fake.android.torchlight.core.Torchlight;
+import com.fake.android.torchlight.v1.ITorchlight;
 import timber.log.Timber;
 
 import java.util.concurrent.BrokenBarrierException;
@@ -36,7 +36,7 @@ final class Common {
         Toast.makeText(context, msg, duration).show();
     }
 
-    public static <T extends IBinder> T blockingBind(Context context, Class<? extends Service> clazz, ServiceDisconnectCallback serviceDisconnectCallback) {
+    static <T extends IBinder> T blockingBind(Context context, Class<? extends Service> clazz, ServiceDisconnectCallback serviceDisconnectCallback) {
         final Intent intent = new Intent(context, clazz);
         final CyclicBarrier barrier = new CyclicBarrier(2);
         final BlockingServiceConnection serviceConnection = new BlockingServiceConnection(serviceDisconnectCallback, barrier);
@@ -55,7 +55,7 @@ final class Common {
         return (T) serviceConnection.getService();
     }
 
-    static Torchlight blockingTorchlightBind(Context context) {
+    static ITorchlight blockingTorchlightBind(Context context) {
         return blockingBind(context, TorchlightService.class, new NullServiceDisconnectCallback());
     }
 
