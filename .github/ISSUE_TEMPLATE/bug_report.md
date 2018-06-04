@@ -17,7 +17,7 @@ Describe what happened instead.
 
 ----
 - Device: 
-- Operating system: Amdroid your-sweet-here, 0.0.0
+- Operating system: Android your-sweet-here, 0.0.0
 - Application Version: 
 
 #### Recording of the bug
