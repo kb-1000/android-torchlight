@@ -1,4 +1,6 @@
-apply plugin: 'com.android.application'
+apply plugin: "com.android.application"
+apply from: "../dependencies.gradle.kts"
+apply plugin: "org.gradle.android.cache-fix"
 
 android {
     signingConfigs {
