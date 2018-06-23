@@ -7,7 +7,6 @@ buildscript {
 
     dependencies {
         classpath(Deps.gradlePlugins.android)
-        classpath("gradle.plugin.org.gradle.android:android-cache-fix-gradle-plugin:+")
     }
 }
 
