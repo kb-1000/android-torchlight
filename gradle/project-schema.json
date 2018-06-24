@@ -1,20 +1,32 @@
 {
     ":": {
-        "conventions": {
+        "conventions": [
             
-        },
+        ],
         "configurations": [
             
         ],
-        "extensions": {
-            "ext": "org.gradle.api.plugins.ExtraPropertiesExtension"
-        }
+        "extensions": [
+            {
+                "type": "org.gradle.api.plugins.ExtraPropertiesExtension",
+                "target": "org.gradle.api.Project",
+                "name": "ext"
+            }
+        ]
     },
     ":app": {
-        "conventions": {
-            "base": "org.gradle.api.plugins.BasePluginConvention",
-            "java": "org.gradle.api.plugins.JavaPluginConvention"
-        },
+        "conventions": [
+            {
+                "type": "org.gradle.api.plugins.BasePluginConvention",
+                "target": "org.gradle.api.Project",
+                "name": "base"
+            },
+            {
+                "type": "org.gradle.api.plugins.JavaPluginConvention",
+                "target": "org.gradle.api.Project",
+                "name": "java"
+            }
+        ],
         "configurations": [
             "androidTestAnnotationProcessor",
             "androidTestApi",
@@ -119,12 +131,52 @@
             "testWearApp",
             "wearApp"
         ],
-        "extensions": {
-            "ext": "org.gradle.api.plugins.ExtraPropertiesExtension",
-            "defaultArtifacts": "org.gradle.api.internal.plugins.DefaultArtifactPublicationSet",
-            "reporting": "org.gradle.api.reporting.ReportingExtension",
-            "buildOutputs": "org.gradle.api.NamedDomainObjectContainer<com.android.build.gradle.api.BaseVariantOutput>",
-            "android": "com.android.build.gradle.AppExtension"
-        }
+        "extensions": [
+            {
+                "type": "org.gradle.api.plugins.ExtraPropertiesExtension",
+                "target": "org.gradle.api.Project",
+                "name": "ext"
+            },
+            {
+                "type": "org.gradle.api.internal.plugins.DefaultArtifactPublicationSet",
+                "target": "org.gradle.api.Project",
+                "name": "defaultArtifacts"
+            },
+            {
+                "type": "org.gradle.api.plugins.ExtraPropertiesExtension",
+                "target": "org.gradle.api.internal.plugins.DefaultArtifactPublicationSet",
+                "name": "ext"
+            },
+            {
+                "type": "org.gradle.api.reporting.ReportingExtension",
+                "target": "org.gradle.api.Project",
+                "name": "reporting"
+            },
+            {
+                "type": "org.gradle.api.plugins.ExtraPropertiesExtension",
+                "target": "org.gradle.api.reporting.ReportingExtension",
+                "name": "ext"
+            },
+            {
+                "type": "org.gradle.api.NamedDomainObjectContainer<com.android.build.gradle.api.BaseVariantOutput>",
+                "target": "org.gradle.api.Project",
+                "name": "buildOutputs"
+            },
+            {
+                "type": "org.gradle.api.plugins.ExtraPropertiesExtension",
+                "target": "org.gradle.api.NamedDomainObjectContainer<com.android.build.gradle.api.BaseVariantOutput>",
+                "name": "ext"
+            },
+            {
+                "type": "com.android.build.gradle.AppExtension",
+                "target": "org.gradle.api.Project",
+                "name": "android"
+            },
+            {
+                "type": "org.gradle.api.plugins.ExtraPropertiesExtension",
+                "target": "com.android.build.gradle.AppExtension",
+                "name": "ext"
+            }
+        ]
     }
 }
