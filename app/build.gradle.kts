@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.gradle.android.cache-fix") version "0.5.1"
+    id("kotlin-android")
+    id("kotlin-android-extensions")
 }
 
 android {
@@ -49,5 +51,5 @@ dependencies {
     implementation("com.android.support:support-vector-drawable:${Deps.versions.androidSupport}")
 
     implementation("com.jakewharton.timber:timber:${Deps.versions.timber}")
-    implementation("org.jetbrains:annotations-java5:15.0")
+    implementation(Deps.libraries.kotlinStdlib)
 }
