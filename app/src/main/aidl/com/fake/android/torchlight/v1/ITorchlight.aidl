@@ -1,6 +1,8 @@
 // ITorchlight.aidl
 package com.fake.android.torchlight.v1;
 
+import com.fake.android.torchlight.v1.ITorchlightStateChangedListener;
+
 /**
  * This isn't meant to be used by other apps to access this app, but it may be done in the future.
  */
@@ -39,4 +41,10 @@ interface ITorchlight {
      * If this is zero and {@link .get} returns {@code false}, the object is low-level released and initialized again when using {@link #retain}, {@link #set} or {@link #toggle}.
      */
     void release();
+
+
+
+    void addStateChangedListener(ITorchlightStateChangedListener listener);
+
+    boolean removeStateChangedListenerNothrow(ITorchlightStateChangedListener listener);
 }

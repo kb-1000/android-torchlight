@@ -1,15 +1,22 @@
 package com.fake.android.torchlight.core;
 
 import android.content.Context;
+import android.os.RemoteException;
 import com.fake.android.torchlight.v1.ITorchlight;
+import com.fake.android.torchlight.v1.ITorchlightStateChangedListener;
 import org.jetbrains.annotations.Contract;
+import timber.log.Timber;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class Torchlight extends ITorchlight.Stub {
     private final Object releaseLock = new Object();
     protected Context context;
     private boolean enabled = false;
-    private int refs;
-    private boolean released;
+    private int refs = 0;
+    private boolean released = false;
+    private List<ITorchlightStateChangedListener> listeners = new ArrayList<>();
 
     abstract public void init(Context context);
 
@@ -63,9 +70,9 @@ public abstract class Torchlight extends ITorchlight.Stub {
     public void set(boolean state) {
         initUninitialized();
         this._set(state);
-        this.enabled = state;
-        if (!TorchlightControl.hasFlash()) {
-            this.enabled = false;
+        if (TorchlightControl.hasFlash()) { //TODO: include || (this instanceof TorchlightFallback)
+            // TODO: can't this if statement be inlined when invalid {@link com.fake.android.torchlight.v1.ITorchlight}s aren't exposed anymore?
+            rawSet(state);
         }
 
         releaseUnreferenced();
@@ -91,5 +98,34 @@ public abstract class Torchlight extends ITorchlight.Stub {
     @Override
     public boolean hasFlash() {
         return TorchlightControl.hasFlash();
+    }
+
+    protected void rawSet(boolean state) {
+        enabled = state;
+        for (ITorchlightStateChangedListener listener : listeners) {
+            try {
+                listener.onTorchlightChanged(state);
+            } catch (RemoteException e) {
+                Timber.w(e, "ITorchlightStateChangedListener disconnected, removing");
+                listeners.remove(listener);
+            }
+        }
+    }
+
+    public void addStateChangedListener(ITorchlightStateChangedListener listener) {
+        if (!listeners.contains(listener)) {
+            listeners.add(listener);
+        } else {
+            Timber.w("ITorchlightStateChangedListener already exists");
+        }
+    }
+
+    public boolean removeStateChangedListenerNothrow(ITorchlightStateChangedListener listener) {
+        if (listeners.contains(listener)) {
+            listeners.remove(listener);
+            return true;
+        } else {
+            return false;
+        }
     }
 }
