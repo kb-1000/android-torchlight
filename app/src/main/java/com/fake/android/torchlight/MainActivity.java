@@ -21,6 +21,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import com.fake.android.torchlight.core.TorchlightFallback;
 import com.fake.android.torchlight.core.TorchlightControl;
 import com.fake.android.torchlight.v1.ITorchlight;
 import timber.log.Timber;
@@ -97,7 +98,7 @@ public class MainActivity extends AppCompatActivity
                     }
                 }
                 if (!TorchlightControl.hasFlash()) {
-                    Intent intent = new Intent(MainActivity.this, FlashActivity.class);
+                    Intent intent = new Intent(MainActivity.this, TorchlightFallback.Activity.class);
                     startActivity(intent);
                 }
                 updateImageButton();

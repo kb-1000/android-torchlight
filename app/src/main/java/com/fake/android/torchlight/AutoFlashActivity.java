@@ -6,6 +6,7 @@ import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import com.fake.android.torchlight.core.TorchlightControl;
+import com.fake.android.torchlight.core.TorchlightFallback;
 import com.fake.android.torchlight.v1.ITorchlight;
 import timber.log.Timber;
 
@@ -36,7 +37,7 @@ public class AutoFlashActivity extends AppCompatActivity {
             }
         }
         if (!TorchlightControl.hasFlash()) {
-            final Intent intent = new Intent(this, FlashActivity.class);
+            final Intent intent = new Intent(this, TorchlightFallback.Activity.class);
             startActivityForResult(intent, 1);
         }
     }

@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FlashActivity" android:theme="@style/AppTheme.Torch" />
+        <activity android:name=".core.TorchlightFallback$Activity" android:theme="@style/AppTheme.Torch" />
         <activity android:name=".AutoFlashActivity" android:label="@string/auto_flash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
