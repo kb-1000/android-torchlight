@@ -70,7 +70,7 @@ public abstract class Torchlight extends ITorchlight.Stub {
     public void set(boolean state) {
         initUninitialized();
         this._set(state);
-        if (TorchlightControl.hasFlash()) { //TODO: include || (this instanceof TorchlightFallback)
+        if (TorchlightControl.hasFlash() || (this instanceof TorchlightFallback)) {
             // TODO: can't this if statement be inlined when invalid {@link com.fake.android.torchlight.v1.ITorchlight}s aren't exposed anymore?
             rawSet(state);
         }

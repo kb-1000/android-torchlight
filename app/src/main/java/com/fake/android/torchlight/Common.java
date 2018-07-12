@@ -14,7 +14,7 @@ import timber.log.Timber;
 import java.util.concurrent.BrokenBarrierException;
 import java.util.concurrent.CyclicBarrier;
 
-final class Common {
+public final class Common {
     private static final int defaultDuration = Toast.LENGTH_SHORT;
 
     private Common() {
@@ -28,15 +28,15 @@ final class Common {
         toast(context, context.getText(resId), duration);
     }
 
-    static void toast(Context context, CharSequence msg) {
+    public static void toast(Context context, CharSequence msg) {
         toast(context, msg, defaultDuration);
     }
 
-    static void toast(Context context, CharSequence msg, int duration) {
+    public static void toast(Context context, CharSequence msg, int duration) {
         Toast.makeText(context, msg, duration).show();
     }
 
-    static <T extends IBinder> T blockingBind(Context context, Class<? extends Service> clazz, ServiceDisconnectCallback serviceDisconnectCallback) {
+    public static <T extends IBinder> T blockingBind(Context context, Class<? extends Service> clazz, ServiceDisconnectCallback serviceDisconnectCallback) {
         final Intent intent = new Intent(context, clazz);
         final CyclicBarrier barrier = new CyclicBarrier(2);
         final BlockingServiceConnection serviceConnection = new BlockingServiceConnection(serviceDisconnectCallback, barrier);
@@ -55,7 +55,7 @@ final class Common {
         return (T) serviceConnection.getService();
     }
 
-    static ITorchlight blockingTorchlightBind(Context context) {
+    public static ITorchlight blockingTorchlightBind(Context context) {
         return blockingBind(context, TorchlightService.class, new NullServiceDisconnectCallback());
     }
 

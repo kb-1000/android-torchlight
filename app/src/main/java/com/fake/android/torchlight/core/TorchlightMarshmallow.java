@@ -7,6 +7,7 @@ import android.hardware.camera2.CameraManager;
 import android.os.Build;
 import android.widget.Toast;
 import com.fake.android.torchlight.R;
+import timber.log.Timber;
 
 @TargetApi(Build.VERSION_CODES.M)
 class TorchlightMarshmallow extends Torchlight {
@@ -50,9 +51,10 @@ class TorchlightMarshmallow extends Torchlight {
         }
         try {
             mCameraManager.setTorchMode(mCameraID, enable);
-        } catch (CameraAccessException e) {
+        } catch (CameraAccessException | IllegalArgumentException e) {
             TorchlightControl.noFlash();
             Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+            Timber.e(e, "CameraManager.setTorchMode failed");
         }
     }
 }

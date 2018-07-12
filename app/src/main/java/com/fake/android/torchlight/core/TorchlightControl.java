@@ -23,6 +23,11 @@ public class TorchlightControl {
                 instance = new TorchlightOld();
             }
             instance.init(context);
+            instance.set(instance.get());
+            if(!_hasFlash) {
+                instance.release();
+                instance = new TorchlightFallback();
+            }
         }
         return instance;
     }

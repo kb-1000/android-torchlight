@@ -21,8 +21,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
-import com.fake.android.torchlight.core.TorchlightFallback;
-import com.fake.android.torchlight.core.TorchlightControl;
 import com.fake.android.torchlight.v1.ITorchlight;
 import timber.log.Timber;
 
@@ -86,20 +84,14 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (TorchlightControl.hasFlash()) {
-                    if (requestPerm()) {
-                        return;
-                    }
-                    try {
-                        torchlight.set(!torchlight.get());
-                    } catch (RemoteException e) {
-                        Timber.e(e);
-                        throw new RuntimeException(e);
-                    }
+                if (requestPerm()) {
+                    return;
                 }
-                if (!TorchlightControl.hasFlash()) {
-                    Intent intent = new Intent(MainActivity.this, TorchlightFallback.Activity.class);
-                    startActivity(intent);
+                try {
+                    torchlight.set(!torchlight.get());
+                } catch (RemoteException e) {
+                    Timber.e(e);
+                    throw new RuntimeException(e);
                 }
                 updateImageButton();
             }

@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.os.RemoteException;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import com.fake.android.torchlight.core.TorchlightControl;
-import com.fake.android.torchlight.core.TorchlightFallback;
 import com.fake.android.torchlight.v1.ITorchlight;
 import timber.log.Timber;
 
@@ -28,30 +26,22 @@ public class AutoFlashActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (TorchlightControl.hasFlash()) {
-            try {
-                torchlight.set(true);
-            } catch (RemoteException e) {
-                Timber.e(e);
-                throw new RuntimeException(e);
-            }
-        }
-        if (!TorchlightControl.hasFlash()) {
-            final Intent intent = new Intent(this, TorchlightFallback.Activity.class);
-            startActivityForResult(intent, 1);
+        try {
+            torchlight.set(true);
+        } catch (RemoteException e) {
+            Timber.e(e);
+            throw new RuntimeException(e);
         }
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if (TorchlightControl.hasFlash()) {
-            try {
-                torchlight.set(false);
-            } catch (RemoteException e) {
-                Timber.e(e);
-                throw new RuntimeException(e);
-            }
+        try {
+            torchlight.set(false);
+        } catch (RemoteException e) {
+            Timber.e(e);
+            throw new RuntimeException(e);
         }
     }
 
