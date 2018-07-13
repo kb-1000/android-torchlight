@@ -11,7 +11,7 @@ import com.fake.android.torchlight.v1.ITorchlightStateChangedListener
 import timber.log.Timber
 
 class TorchlightFallback : Torchlight() {
-    override fun init(context: Context?) {}
+    override fun init(context: Context) {}
 
     override fun _release() {}
 
