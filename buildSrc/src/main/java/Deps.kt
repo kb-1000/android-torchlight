@@ -1,11 +1,11 @@
 object Deps {
     object versions {
-        const val androidGradlePlugin = "3.1.3"
-        const val gradle = "4.8.1"
-        const val androidSupport = "27.1.1"
-        const val androidSdk = 27
-        const val timber = "4.7.0"
-        const val kotlin = "1.2.50"
+        const val androidGradlePlugin = "3.1.4"
+        const val gradle = "4.10"
+        const val androidSupport = "28.0.0-rc01"
+        const val androidSdk = 28
+        const val timber = "4.7.1"
+        const val kotlin = "1.2.61"
     }
 
     object gradlePlugins {
