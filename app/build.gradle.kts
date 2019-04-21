@@ -1,13 +1,12 @@
 plugins {
     id("com.android.application")
-    id("org.gradle.android.cache-fix") version "0.5.1"
     id("kotlin-android")
     id("kotlin-android-extensions")
 }
 
 android {
     compileSdkVersion(Deps.versions.androidSdk)
-    buildToolsVersion = "27.0.3"
+    buildToolsVersion = "28.0.3"
     defaultConfig {
         applicationId = "com.fake.android.torchlight"
         minSdkVersion(16)
