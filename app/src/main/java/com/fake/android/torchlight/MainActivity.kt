@@ -7,20 +7,20 @@ import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.os.RemoteException
-import android.support.design.widget.FloatingActionButton
-import android.support.design.widget.NavigationView
-import android.support.v4.app.ActivityCompat
-import android.support.v4.content.ContextCompat
-import android.support.v4.view.GravityCompat
-import android.support.v4.widget.DrawerLayout
-import android.support.v7.app.ActionBarDrawerToggle
-import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.TextView
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import com.fake.android.torchlight.v1.ITorchlight
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.navigation.NavigationView
 import timber.log.Timber
 import java.io.File
 import java.util.*
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (permissions.size != 1 || permissions[0] == Manifest.permission.CAMERA) {
-            Timber.e("Unknown permissions were requested: %s", Arrays.toString(permissions))
+            Timber.e("Unknown permissions were requested: %s", permissions.contentToString())
         }
     }
 
@@ -153,6 +153,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 startActivity(intent)
             }
 
+            // TODO: this won't work with split APKs
             R.id.nav_share -> try {
                 intent = Intent(Intent.ACTION_SEND)
                 intent.putExtra(Intent.EXTRA_STREAM, Uri.fromFile(File(this@MainActivity.applicationInfo.sourceDir)))

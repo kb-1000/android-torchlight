@@ -1,10 +1,9 @@
 package com.fake.android.torchlight
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.RemoteException
-import android.support.v7.app.AppCompatActivity
 import android.view.View
+import androidx.appcompat.app.AppCompatActivity
 import com.fake.android.torchlight.v1.ITorchlight
 import timber.log.Timber
 
@@ -54,11 +53,6 @@ class AutoFlashActivity : AppCompatActivity() {
             throw RuntimeException(e)
         }
 
-    }
-
-    override fun onActivityResult(requestCode: Int, nothing: Int, data: Intent) {
-        super.onActivityResult(requestCode, nothing, data)
-        finish()
     }
 
     fun finish(view: View) {

@@ -1,7 +1,6 @@
 plugins {
     id("com.android.application")
     id("kotlin-android")
-    id("kotlin-android-extensions")
 }
 
 repositories {
@@ -10,7 +9,7 @@ repositories {
 }
 
 android {
-    compileSdk = 27
+    compileSdk = 30
     defaultConfig {
         applicationId = "com.fake.android.torchlight"
         minSdk = 16
@@ -23,7 +22,7 @@ android {
     }
 
     buildTypes {
-        getByName("release") {
+        release {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             isDebuggable = false
             isJniDebuggable = false
@@ -31,7 +30,7 @@ android {
             isMinifyEnabled = true
         }
 
-        getByName("debug") {
+        debug {
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
             isDebuggable = true
             isJniDebuggable = true
@@ -46,10 +45,10 @@ android {
 }
 
 dependencies {
-    implementation("com.android.support:appcompat-v7:27.1.1")
-    implementation("com.android.support:design:27.1.1")
-    implementation("com.android.support:support-v4:27.1.1")
-    implementation("com.android.support:support-vector-drawable:27.1.1")
+    implementation("androidx.appcompat:appcompat:1.3.1")
+    implementation("com.google.android.material:material:1.4.0")
+    implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("androidx.vectordrawable:vectordrawable:1.1.0")
 
     implementation("com.jakewharton.timber:timber:4.7.1")
     implementation(kotlin("stdlib-jdk8"))

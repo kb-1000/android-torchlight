@@ -17,7 +17,7 @@ class TorchlightService : Service() {
             torchlight!!
         }
 
-    override fun onBind(intent: Intent): IBinder? {
+    override fun onBind(intent: Intent): IBinder {
         return impl
     }
 }

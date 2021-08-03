@@ -3,8 +3,8 @@ package com.fake.android.torchlight.core
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.fake.android.torchlight.Common
 import com.fake.android.torchlight.R
 import com.fake.android.torchlight.v1.ITorchlightStateChangedListener
@@ -40,7 +40,7 @@ class TorchlightFallback : Torchlight() {
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_flash)
-            val torchlight = com.fake.android.torchlight.Common.blockingTorchlightBind(this)
+            val torchlight = Common.blockingTorchlightBind(this)
             if (torchlight !is TorchlightFallback) {
                 val msg = "TorchlightFallback\$Activity is only allowed to be called if the ITorchlight instance is a TorchlightFallback"
                 Timber.e(msg)

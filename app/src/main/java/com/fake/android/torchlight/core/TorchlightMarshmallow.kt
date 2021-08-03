@@ -6,10 +6,12 @@ import android.hardware.camera2.CameraAccessException
 import android.hardware.camera2.CameraManager
 import android.os.Build
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import com.fake.android.torchlight.R
 import timber.log.Timber
 
 @TargetApi(Build.VERSION_CODES.M)
+@RequiresApi(Build.VERSION_CODES.M)
 internal class TorchlightMarshmallow : Torchlight() {
     private var mCameraID: String? = null
     private var mCameraManager: CameraManager? = null

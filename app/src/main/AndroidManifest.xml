@@ -20,7 +20,8 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".core.TorchlightFallback$Activity" android:theme="@style/AppTheme.Torch" />
-        <activity android:name=".AutoFlashActivity" android:label="@string/auto_flash">
+        <activity android:name=".AutoFlashActivity" android:label="@string/auto_flash" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,7 +38,7 @@
         </activity>
 
         <receiver android:name=".ToggleReceiver" android:enabled="true" />
-        <receiver android:name=".TorchlightWidget">
+        <receiver android:name=".TorchlightWidget" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>

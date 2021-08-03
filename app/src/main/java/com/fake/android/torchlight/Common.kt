@@ -6,23 +6,20 @@ import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
 import android.os.IBinder
-import android.support.annotation.StringRes
 import android.widget.Toast
+import androidx.annotation.StringRes
 import com.fake.android.torchlight.v1.ITorchlight
 import timber.log.Timber
-
 import java.util.concurrent.BrokenBarrierException
 import java.util.concurrent.CyclicBarrier
 
 object Common {
     private const val defaultDuration = Toast.LENGTH_SHORT
 
-    @JvmOverloads
     internal fun toast(context: Context, @StringRes resId: Int, duration: Int = defaultDuration) {
         toast(context, context.getText(resId), duration)
     }
 
-    @JvmOverloads
     fun toast(context: Context, msg: CharSequence, duration: Int = defaultDuration) {
         Toast.makeText(context, msg, duration).show()
     }
@@ -62,8 +59,8 @@ object Common {
     /**
      * Defines callbacks for service binding, passed to bindService()
      */
-    private class BlockingServiceConnection internal constructor(private val disconnectCallback: ServiceDisconnectCallback, private val barrier: CyclicBarrier) : ServiceConnection {
-        internal var service: IBinder? = null
+    private class BlockingServiceConnection(private val disconnectCallback: ServiceDisconnectCallback, private val barrier: CyclicBarrier) : ServiceConnection {
+        var service: IBinder? = null
             private set
 
 

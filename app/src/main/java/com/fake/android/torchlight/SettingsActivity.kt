@@ -8,8 +8,8 @@ import android.content.res.Configuration
 import android.os.Build
 import android.os.Bundle
 import android.preference.*
-import android.support.v4.app.NavUtils
 import android.view.MenuItem
+import androidx.core.app.NavUtils
 
 /**
  * A [PreferenceActivity] that presents a set of application settings. On
@@ -59,7 +59,7 @@ class SettingsActivity : AppCompatPreferenceActivity() {
      * {@inheritDoc}
      */
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    override fun onBuildHeaders(target: List<PreferenceActivity.Header>) {
+    override fun onBuildHeaders(target: List<Header>) {
         loadHeadersFromResource(R.xml.pref_headers, target)
     }
 

@@ -5,7 +5,7 @@ import android.os.Build
 import org.jetbrains.annotations.Contract
 
 /**
- * Created by kaeptmblaubaer1000 on 16.02.2017.
+ * Created by kb1000 on 16.02.2017.
  * Class to generalize Camera usage.
  */
 object TorchlightControl {
@@ -17,8 +17,7 @@ object TorchlightControl {
     @Synchronized
     fun getInstance(context: Context): Torchlight {
         if (instance == null) {
-            val sdk = Build.VERSION.SDK_INT
-            instance = if (sdk > 23) {
+            instance = if (Build.VERSION.SDK_INT > Build.VERSION_CODES.M) {
                 TorchlightMarshmallow()
             } else {
                 TorchlightOld()

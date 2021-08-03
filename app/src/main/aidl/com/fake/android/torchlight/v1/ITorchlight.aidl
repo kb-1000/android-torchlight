@@ -4,7 +4,7 @@ package com.fake.android.torchlight.v1;
 import com.fake.android.torchlight.v1.ITorchlightStateChangedListener;
 
 /**
- * This isn't meant to be used by other apps to access this app, but it may be done in the future.
+ * This isn't meant to be used by other apps to access this app for now, but it may be supported in future.
  */
 interface ITorchlight {
     /**

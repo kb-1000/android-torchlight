@@ -32,8 +32,8 @@ internal object TorchlightWidgetCommon {
         // Construct the RemoteViews object
         val views = RemoteViews(context.packageName, R.layout.torchlight_widget)
 
-        views.setTextViewText(R.id.appwidget_text, context.getString(if (enabled) R.string.abc_capital_on else R.string.abc_capital_off))
-        views.setContentDescription(R.id.appwidget_text, context.getString(if (enabled) R.string.abc_capital_on else R.string.abc_capital_off))
+        views.setTextViewText(R.id.appwidget_text, context.getString(if (enabled) androidx.appcompat.R.string.abc_capital_on else androidx.appcompat.R.string.abc_capital_off))
+        views.setContentDescription(R.id.appwidget_text, context.getString(if (enabled) androidx.appcompat.R.string.abc_capital_on else androidx.appcompat.R.string.abc_capital_off))
         views.setImageViewResource(R.id.imageButton, if (enabled) R.drawable.ic_sunny_white else R.drawable.ic_sunny_black)
         views.setContentDescription(R.id.imageButton, context.getString(if (enabled) R.string.torchlight_is_on else R.string.torchlight_is_off))
         views.setOnClickPendingIntent(R.id.imageButton, PendingIntent.getBroadcast(context, 0, Intent(context, ToggleReceiver::class.java), 0))
