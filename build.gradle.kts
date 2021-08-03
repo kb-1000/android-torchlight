@@ -1,29 +1,26 @@
 buildscript {
     repositories {
-        jcenter()
+        mavenCentral()
         gradlePluginPortal()
         google()
     }
 
     dependencies {
-        classpath(Deps.gradlePlugins.android)
-        classpath(Deps.gradlePlugins.kotlin)
+        classpath("com.android.tools.build:gradle:7.0.0")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.21")
     }
 }
 
 allprojects {
     repositories {
         mavenCentral()
-        jcenter()
         google()
     }
 }
 
-val wrapper: Wrapper by tasks
-wrapper {
-    distributionType = Wrapper.DistributionType.ALL
-    gradleVersion = "5.4"
-    distributionSha256Sum = "f177768e7a032727e4338c8fd047f8f263e5bd283f67a7766c1ba4182c8455a6"
+tasks.named<Wrapper>("wrapper") {
+    distributionType = Wrapper.DistributionType.BIN
+    gradleVersion = "7.1.1"
 }
 
 task<Delete>("clean") {

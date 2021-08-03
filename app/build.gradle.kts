@@ -4,13 +4,17 @@ plugins {
     id("kotlin-android-extensions")
 }
 
+repositories {
+    mavenCentral()
+    google()
+}
+
 android {
-    compileSdkVersion(Deps.versions.androidSdk)
-    buildToolsVersion = "28.0.3"
+    compileSdk = 27
     defaultConfig {
         applicationId = "com.fake.android.torchlight"
-        minSdkVersion(16)
-        targetSdkVersion(Deps.versions.androidSdk)
+        minSdk = 16
+        targetSdk = 27
         versionCode = 207
         versionName = "2.7"
         vectorDrawables {
@@ -25,7 +29,6 @@ android {
             isJniDebuggable = false
             isRenderscriptDebuggable = false
             isMinifyEnabled = true
-            isZipAlignEnabled = true
         }
 
         getByName("debug") {
@@ -34,21 +37,20 @@ android {
             isJniDebuggable = true
             isRenderscriptDebuggable = true
             isMinifyEnabled = false
-            isZipAlignEnabled = true
         }
     }
 
-    lintOptions {
+    lint {
         isAbortOnError = false
     }
 }
 
 dependencies {
-    implementation("com.android.support:appcompat-v7:${Deps.versions.androidSupport}")
-    implementation("com.android.support:design:${Deps.versions.androidSupport}")
-    implementation("com.android.support:support-v4:${Deps.versions.androidSupport}")
-    implementation("com.android.support:support-vector-drawable:${Deps.versions.androidSupport}")
+    implementation("com.android.support:appcompat-v7:27.1.1")
+    implementation("com.android.support:design:27.1.1")
+    implementation("com.android.support:support-v4:27.1.1")
+    implementation("com.android.support:support-vector-drawable:27.1.1")
 
-    implementation("com.jakewharton.timber:timber:${Deps.versions.timber}")
-    implementation(Deps.libraries.kotlinStdlib)
+    implementation("com.jakewharton.timber:timber:4.7.1")
+    implementation(kotlin("stdlib-jdk8"))
 }
