@@ -1,4 +1,4 @@
-package com.fake.android.torchlight
+package de.kb1000.flashlight
 
 import android.Manifest
 import android.content.ActivityNotFoundException
@@ -18,7 +18,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import com.fake.android.torchlight.v1.ITorchlight
+import de.kb1000.flashlight.v1.IFlashlight
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import timber.log.Timber
@@ -27,18 +27,18 @@ import java.util.*
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener, ActivityCompat.OnRequestPermissionsResultCallback {
     private var fab: FloatingActionButton? = null
-    private var torchlight: ITorchlight? = null
+    private var flashlight: IFlashlight? = null
     private var drawer: DrawerLayout? = null
 
     override fun onDestroy() {
         super.onDestroy()
         try {
-            torchlight!!.release()
+            flashlight!!.release()
         } catch (e: RemoteException) {
             Timber.e(e)
         }
 
-        torchlight = null
+        flashlight = null
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        torchlight = Common.blockingTorchlightBind(this)
+        flashlight = Common.blockingFlashlightBind(this)
         setContentView(R.layout.activity_main)
         if (ContextCompat.checkSelfPermission(this,
                         Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED && ActivityCompat.shouldShowRequestPermissionRationale(this,
@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 return@OnClickListener
             }
             try {
-                torchlight!!.set(!torchlight!!.get())
+                flashlight!!.set(!flashlight!!.get())
             } catch (e: RemoteException) {
                 Timber.e(e)
                 throw RuntimeException(e)
@@ -99,7 +99,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     private fun updateImageButton() {
         try {
-            if (torchlight!!.get()) {
+            if (flashlight!!.get()) {
                 fab!!.setImageResource(R.drawable.ic_sunny_white)
             } else {
                 fab!!.setImageResource(R.drawable.ic_sunny_black)

@@ -1,9 +1,9 @@
-package com.fake.android.torchlight
+package de.kb1000.flashlight
 
 import android.app.Application
 import timber.log.Timber
 
-class TorchlightApplication : Application() {
+class FlashlightApplication : Application() {
     /**
      * Called when the application is starting, before any activity, service,
      * or receiver objects (excluding content providers) have been created.

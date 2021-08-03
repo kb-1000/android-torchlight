@@ -13,8 +13,8 @@
     <string name="share">Teilen</string>
     <string name="send_github">Feedback zu GitHub senden</string>
     <string name="feedback">Rückmeldung</string>
-    <string name="torchlight_is_off">Taschenlampe ist AUS</string>
-    <string name="torchlight_is_on">Taschenlampe ist AN</string>
+    <string name="flashlight_is_off">Taschenlampe ist AUS</string>
+    <string name="flashlight_is_on">Taschenlampe ist AN</string>
     <string name="pref_title_information_version">Version</string>
     <string name="pref_header_information">Information</string>
     <!-- @formatter:off -->

@@ -1,4 +1,4 @@
-package com.fake.android.torchlight
+package de.kb1000.flashlight
 
 
 import android.annotation.TargetApi

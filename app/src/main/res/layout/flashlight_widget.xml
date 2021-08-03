@@ -13,7 +13,7 @@
         android:layout_margin="8dp"
         android:layout_weight="1"
         android:background="#09C"
-        android:contentDescription="@string/torchlight_is_off"
+        android:contentDescription="@string/flashlight_is_off"
         android:gravity="center"
         android:text="@string/abc_capital_off"
         android:textColor="#ffffff"
@@ -25,6 +25,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:contentDescription="@string/torchlight_is_off"
+        android:contentDescription="@string/flashlight_is_off"
         app:srcCompat="@drawable/ic_sunny_black" />
 </LinearLayout>

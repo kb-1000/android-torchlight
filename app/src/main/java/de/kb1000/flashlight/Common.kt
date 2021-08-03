@@ -1,4 +1,4 @@
-package com.fake.android.torchlight
+package de.kb1000.flashlight
 
 import android.app.Service
 import android.content.ComponentName
@@ -8,7 +8,7 @@ import android.content.ServiceConnection
 import android.os.IBinder
 import android.widget.Toast
 import androidx.annotation.StringRes
-import com.fake.android.torchlight.v1.ITorchlight
+import de.kb1000.flashlight.v1.IFlashlight
 import timber.log.Timber
 import java.util.concurrent.BrokenBarrierException
 import java.util.concurrent.CyclicBarrier
@@ -44,8 +44,8 @@ object Common {
         return serviceConnection.service as T
     }
 
-    fun blockingTorchlightBind(context: Context): ITorchlight {
-        return blockingBind<ITorchlight.Stub>(context, TorchlightService::class.java, NullServiceDisconnectCallback())
+    fun blockingFlashlightBind(context: Context): IFlashlight {
+        return blockingBind<IFlashlight.Stub>(context, FlashlightService::class.java, NullServiceDisconnectCallback())
     }
 
     interface ServiceDisconnectCallback {

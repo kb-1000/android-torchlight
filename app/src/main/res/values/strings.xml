@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Torchlight</string>
+    <string name="app_name">Flashlight</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -16,8 +16,8 @@
     <string name="feedback">Feedback</string>
     <string name="share">Share</string>
     <string name="send_github">Send to GitHub</string>
-    <string name="torchlight_is_off">Torchlight is OFF</string>
-    <string name="torchlight_is_on">Torchlight is ON</string>
+    <string name="flashlight_is_off">Flashlight is OFF</string>
+    <string name="flashlight_is_on">Flashlight is ON</string>
     <string name="error_no_share_app">You don\'t have an app that accepts this share.</string>
     <string name="github_issue_url" translatable="false">
         https://github.com/kb-1000/android-torchlight/issues/new/choose
@@ -31,7 +31,8 @@
     <!-- @formatter:off -->
     <string name="pref_information_app_description">"This app is a privacy-friendly app to utilize the flash of the camera for a light.
 It is privacy friendly, because it only has the permission it really needs:
-The flash is for the camera so we need this permission.
-The flashlight permission is needed to access the flash via the camera access."</string>
+The flash is a part of the camera so we need this permission.
+The flashlight permission is needed to access the flash via the camera access.
+This does not have internet access, or contains ads."</string>
     <!-- @formatter:on -->
 </resources>

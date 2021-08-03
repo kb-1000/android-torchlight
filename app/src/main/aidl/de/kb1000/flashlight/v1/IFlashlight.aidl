@@ -1,12 +1,12 @@
-// ITorchlight.aidl
-package com.fake.android.torchlight.v1;
+// IFlashlight.aidl
+package de.kb1000.flashlight.v1;
 
-import com.fake.android.torchlight.v1.ITorchlightStateChangedListener;
+import de.kb1000.flashlight.v1.IFlashlightStateChangedListener;
 
 /**
- * This isn't meant to be used by other apps to access this app for now, but it may be supported in future.
+ * This isn't meant to be used by other apps to access this app for now, but that may be supported in future.
  */
-interface ITorchlight {
+interface IFlashlight {
     /**
      * @return the current enabled state
      */
@@ -34,7 +34,7 @@ interface ITorchlight {
     /**
      * Increase the internal reference count of this object.
      */
-    ITorchlight retain();
+    IFlashlight retain();
 
     /**
      * Decrease the internal reference count of this object.
@@ -44,7 +44,7 @@ interface ITorchlight {
 
 
 
-    void addStateChangedListener(ITorchlightStateChangedListener listener);
+    void addStateChangedListener(IFlashlightStateChangedListener listener);
 
-    boolean removeStateChangedListenerNothrow(ITorchlightStateChangedListener listener);
+    boolean removeStateChangedListenerNothrow(IFlashlightStateChangedListener listener);
 }

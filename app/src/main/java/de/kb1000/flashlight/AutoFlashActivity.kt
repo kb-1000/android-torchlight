@@ -1,20 +1,20 @@
-package com.fake.android.torchlight
+package de.kb1000.flashlight
 
 import android.os.Bundle
 import android.os.RemoteException
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import com.fake.android.torchlight.v1.ITorchlight
+import de.kb1000.flashlight.v1.IFlashlight
 import timber.log.Timber
 
 class AutoFlashActivity : AppCompatActivity() {
-    private var torchlight: ITorchlight? = null
+    private var flashlight: IFlashlight? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_auto_flash)
         try {
-            torchlight = Common.blockingTorchlightBind(this).retain()
+            flashlight = Common.blockingFlashlightBind(this).retain()
         } catch (e: RemoteException) {
             Timber.e(e)
             throw RuntimeException(e)
@@ -25,7 +25,7 @@ class AutoFlashActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         try {
-            torchlight!!.set(true)
+            flashlight!!.set(true)
         } catch (e: RemoteException) {
             Timber.e(e)
             throw RuntimeException(e)
@@ -36,7 +36,7 @@ class AutoFlashActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         try {
-            torchlight!!.set(false)
+            flashlight!!.set(false)
         } catch (e: RemoteException) {
             Timber.e(e)
             throw RuntimeException(e)
@@ -47,7 +47,7 @@ class AutoFlashActivity : AppCompatActivity() {
     override fun finish() {
         super.finish()
         try {
-            torchlight!!.release()
+            flashlight!!.release()
         } catch (e: RemoteException) {
             Timber.e(e)
             throw RuntimeException(e)

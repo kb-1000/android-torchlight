@@ -11,7 +11,7 @@ repositories {
 android {
     compileSdk = 30
     defaultConfig {
-        applicationId = "com.fake.android.torchlight"
+        applicationId = "de.kb1000.flashlight"
         minSdk = 16
         targetSdk = 27
         versionCode = 207
@@ -47,7 +47,6 @@ android {
 dependencies {
     implementation("androidx.appcompat:appcompat:1.3.1")
     implementation("com.google.android.material:material:1.4.0")
-    implementation("androidx.legacy:legacy-support-v4:1.0.0")
     implementation("androidx.vectordrawable:vectordrawable:1.1.0")
 
     implementation("com.jakewharton.timber:timber:4.7.1")

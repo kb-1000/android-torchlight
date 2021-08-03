@@ -1,4 +1,4 @@
-package com.fake.android.torchlight
+package de.kb1000.flashlight
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
@@ -14,13 +14,13 @@ import timber.log.Timber
  * This is used to update the text of the widget.
  */
 
-internal object TorchlightWidgetCommon {
+internal object FlashlightWidgetCommon {
 
     @SuppressLint("PrivateResource")
     private fun updateOne(context: Context, appWidgetManager: AppWidgetManager,
                           appWidgetId: Int) {
 
-        val camera = Common.blockingTorchlightBind(context)
+        val camera = Common.blockingFlashlightBind(context)
         val enabled: Boolean
         try {
             enabled = camera.get()
@@ -30,12 +30,12 @@ internal object TorchlightWidgetCommon {
         }
 
         // Construct the RemoteViews object
-        val views = RemoteViews(context.packageName, R.layout.torchlight_widget)
+        val views = RemoteViews(context.packageName, R.layout.flashlight_widget)
 
         views.setTextViewText(R.id.appwidget_text, context.getString(if (enabled) androidx.appcompat.R.string.abc_capital_on else androidx.appcompat.R.string.abc_capital_off))
         views.setContentDescription(R.id.appwidget_text, context.getString(if (enabled) androidx.appcompat.R.string.abc_capital_on else androidx.appcompat.R.string.abc_capital_off))
         views.setImageViewResource(R.id.imageButton, if (enabled) R.drawable.ic_sunny_white else R.drawable.ic_sunny_black)
-        views.setContentDescription(R.id.imageButton, context.getString(if (enabled) R.string.torchlight_is_on else R.string.torchlight_is_off))
+        views.setContentDescription(R.id.imageButton, context.getString(if (enabled) R.string.flashlight_is_on else R.string.flashlight_is_off))
         views.setOnClickPendingIntent(R.id.imageButton, PendingIntent.getBroadcast(context, 0, Intent(context, ToggleReceiver::class.java), 0))
 
         // Instruct the widget manager to update the widget

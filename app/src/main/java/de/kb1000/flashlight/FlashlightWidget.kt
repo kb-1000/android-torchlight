@@ -1,4 +1,4 @@
-package com.fake.android.torchlight
+package de.kb1000.flashlight
 
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
@@ -7,12 +7,12 @@ import android.content.Context
 /**
  * Implementation of App Widget functionality.
  */
-class TorchlightWidget : AppWidgetProvider() {
+class FlashlightWidget : AppWidgetProvider() {
 
 
     override fun onUpdate(context: Context, appWidgetManager: AppWidgetManager, appWidgetIds: IntArray) {
         // There may be multiple widgets active, so update all of them
-        TorchlightWidgetCommon.update(context, appWidgetManager, appWidgetIds)
+        FlashlightWidgetCommon.update(context, appWidgetManager, appWidgetIds)
     }
 
     override fun onEnabled(context: Context) {

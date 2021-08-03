@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.fake.android.torchlight"
+    package="de.kb1000.flashlight"
     android:installLocation="auto">
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
@@ -13,7 +13,7 @@
     <application android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:name=".TorchlightApplication"
+        android:name=".FlashlightApplication"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -28,7 +28,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".core.TorchlightFallback$Activity" android:theme="@style/AppTheme.Torch" />
+        <activity android:name=".core.FlashlightFallback$Activity" android:theme="@style/AppTheme.Torch" />
         <activity android:name=".AutoFlashActivity" android:label="@string/auto_flash" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,22 +38,22 @@
         </activity>
 
         <receiver android:name=".ToggleReceiver" android:enabled="true" />
-        <receiver android:name=".TorchlightWidget" android:exported="true">
+        <receiver android:name=".FlashlightWidget" android:exported="true">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
 
-            <meta-data android:name="android.appwidget.provider" android:resource="@xml/torchlight_widget_info" />
+            <meta-data android:name="android.appwidget.provider" android:resource="@xml/flashlight_widget_info" />
         </receiver>
 
         <activity android:name=".SettingsActivity"
             android:label="@string/action_settings"
-            android:parentActivityName=".MainActivity">
+            android:parentActivityName="de.kb1000.flashlight.MainActivity">
             <meta-data android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.fake.android.torchlight.MainActivity" />
+                android:value="de.kb1000.flashlight.MainActivity" />
         </activity>
 
-        <service android:name=".TorchlightService" android:enabled="true" android:exported="false" />
+        <service android:name=".FlashlightService" android:enabled="true" android:exported="false" />
     </application>
 
 </manifest>

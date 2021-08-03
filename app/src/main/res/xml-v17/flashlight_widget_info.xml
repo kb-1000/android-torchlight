@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <appwidget-provider xmlns:android="http://schemas.android.com/apk/res/android"
-    android:initialKeyguardLayout="@layout/torchlight_widget"
-    android:initialLayout="@layout/torchlight_widget"
+    android:initialKeyguardLayout="@layout/flashlight_widget"
+    android:initialLayout="@layout/flashlight_widget"
     android:minHeight="40dp"
     android:minWidth="40dp"
     android:previewImage="@drawable/example_appwidget_preview"

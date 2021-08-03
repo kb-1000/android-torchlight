@@ -1,16 +1,16 @@
-package com.fake.android.torchlight.core
+package de.kb1000.flashlight.core
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.fake.android.torchlight.Common
-import com.fake.android.torchlight.R
-import com.fake.android.torchlight.v1.ITorchlightStateChangedListener
+import de.kb1000.flashlight.Common
+import de.kb1000.flashlight.R
+import de.kb1000.flashlight.v1.IFlashlightStateChangedListener
 import timber.log.Timber
 
-class TorchlightFallback : Torchlight() {
+class FlashlightFallback : Flashlight() {
     override fun init(context: Context) {}
 
     override fun _release() {}
@@ -27,10 +27,10 @@ class TorchlightFallback : Torchlight() {
      * This [android.app.Activity] provides compatibility for devices without a flash.
      */
     class Activity : AppCompatActivity() {
-        private var torchlightFallback: TorchlightFallback? = null
+        private var flashlightFallback: FlashlightFallback? = null
 
-        private val listener: ITorchlightStateChangedListener = object : ITorchlightStateChangedListener.Stub() {
-            override fun onTorchlightChanged(newState: Boolean) {
+        private val listener: IFlashlightStateChangedListener = object : IFlashlightStateChangedListener.Stub() {
+            override fun onFlashlightChanged(newState: Boolean) {
                 if (!newState) {
                     finish()
                 }
@@ -40,31 +40,31 @@ class TorchlightFallback : Torchlight() {
         override fun onCreate(savedInstanceState: Bundle?) {
             super.onCreate(savedInstanceState)
             setContentView(R.layout.activity_flash)
-            val torchlight = Common.blockingTorchlightBind(this)
-            if (torchlight !is TorchlightFallback) {
-                val msg = "TorchlightFallback\$Activity is only allowed to be called if the ITorchlight instance is a TorchlightFallback"
+            val flashlight = Common.blockingFlashlightBind(this)
+            if (flashlight !is FlashlightFallback) {
+                val msg = "FlashlightFallback\$Activity is only allowed to be called if the IFlashlight instance is a FlashlightFallback"
                 Timber.e(msg)
                 Common.toast(this, msg, Toast.LENGTH_LONG)
                 finish()
                 return
             }
-            torchlightFallback = torchlight
-            torchlight.addStateChangedListener(listener)
+            flashlightFallback = flashlight
+            flashlight.addStateChangedListener(listener)
         }
 
         override fun onResume() {
             super.onResume()
-            torchlightFallback?.rawSet(true)
+            flashlightFallback?.rawSet(true)
         }
 
         override fun onPause() {
             super.onPause()
-            torchlightFallback?.rawSet(false)
+            flashlightFallback?.rawSet(false)
         }
 
         override fun onDestroy() {
             super.onDestroy()
-            torchlightFallback?.removeStateChangedListenerNothrow(listener)
+            flashlightFallback?.removeStateChangedListenerNothrow(listener)
         }
     }
 }

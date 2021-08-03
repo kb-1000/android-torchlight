@@ -1,20 +1,20 @@
-package com.fake.android.torchlight.core
+package de.kb1000.flashlight.core
 
 import android.content.Context
 import android.os.RemoteException
-import com.fake.android.torchlight.v1.ITorchlight
-import com.fake.android.torchlight.v1.ITorchlightStateChangedListener
+import de.kb1000.flashlight.v1.IFlashlight
+import de.kb1000.flashlight.v1.IFlashlightStateChangedListener
 import org.jetbrains.annotations.Contract
 import timber.log.Timber
 import java.util.*
 
-abstract class Torchlight : ITorchlight.Stub() {
+abstract class Flashlight : IFlashlight.Stub() {
     private val releaseLock = Any()
     protected lateinit var context: Context
     private var enabled = false
     private var refs = 0
     private var released = false
-    private val listeners = ArrayList<ITorchlightStateChangedListener>()
+    private val listeners = ArrayList<IFlashlightStateChangedListener>()
 
     abstract fun init(context: Context)
 
@@ -34,7 +34,7 @@ abstract class Torchlight : ITorchlight.Stub() {
         }
     }
 
-    override fun retain(): ITorchlight {
+    override fun retain(): IFlashlight {
         refs += 1
         initUninitialized()
         return this
@@ -64,8 +64,8 @@ abstract class Torchlight : ITorchlight.Stub() {
     override fun set(state: Boolean) {
         initUninitialized()
         this._set(state)
-        if (TorchlightControl.hasFlash() || this is TorchlightFallback) {
-            // TODO: can't this if statement be inlined when invalid {@link com.fake.android.torchlight.v1.ITorchlight}s aren't exposed anymore?
+        if (FlashlightControl.hasFlash() || this is FlashlightFallback) {
+            // TODO: can't this if statement be inlined when invalid {@link de.kb1000.flashlight.v1.IFlashlight}s aren't exposed anymore?
             rawSet(state)
         }
 
@@ -90,31 +90,31 @@ abstract class Torchlight : ITorchlight.Stub() {
      */
     @Contract(pure = true)
     override fun hasFlash(): Boolean {
-        return TorchlightControl.hasFlash()
+        return FlashlightControl.hasFlash()
     }
 
     protected fun rawSet(state: Boolean) {
         enabled = state
         for (listener in listeners) {
             try {
-                listener.onTorchlightChanged(state)
+                listener.onFlashlightChanged(state)
             } catch (e: RemoteException) {
-                Timber.w(e, "ITorchlightStateChangedListener disconnected, removing")
+                Timber.w(e, "IFlashlightStateChangedListener disconnected, removing")
                 listeners.remove(listener)
             }
 
         }
     }
 
-    override fun addStateChangedListener(listener: ITorchlightStateChangedListener) {
+    override fun addStateChangedListener(listener: IFlashlightStateChangedListener) {
         if (!listeners.contains(listener)) {
             listeners.add(listener)
         } else {
-            Timber.w("ITorchlightStateChangedListener already exists")
+            Timber.w("IFlashlightStateChangedListener already exists")
         }
     }
 
-    override fun removeStateChangedListenerNothrow(listener: ITorchlightStateChangedListener): Boolean {
+    override fun removeStateChangedListenerNothrow(listener: IFlashlightStateChangedListener): Boolean {
         return if (listeners.contains(listener)) {
             listeners.remove(listener)
             true

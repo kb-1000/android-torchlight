@@ -1,4 +1,4 @@
-package com.fake.android.torchlight.core
+package de.kb1000.flashlight.core
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -6,7 +6,7 @@ import android.hardware.Camera
 import android.widget.Toast
 
 @SuppressLint("deprecation")
-internal class TorchlightOld : Torchlight() {
+internal class FlashlightOld : Flashlight() {
     private var mCamera: Camera? = null
     private var mCameraParams: Camera.Parameters? = null
 
@@ -16,7 +16,7 @@ internal class TorchlightOld : Torchlight() {
             mCamera = Camera.open()
             mCameraParams = mCamera!!.parameters
         } catch (e: RuntimeException) {
-            TorchlightControl.noFlash()
+            FlashlightControl.noFlash()
             Toast.makeText(this.context, e.message, Toast.LENGTH_SHORT).show()
         }
 
@@ -48,7 +48,7 @@ internal class TorchlightOld : Torchlight() {
             mCamera!!.parameters = mCameraParams
         } catch (e: RuntimeException) {
             if (e.message?.startsWith("set") == true) {
-                TorchlightControl.noFlash()
+                FlashlightControl.noFlash()
             }
             Toast.makeText(context, e.message, Toast.LENGTH_LONG).show()
             mCamera!!.stopPreview()

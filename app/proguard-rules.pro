@@ -16,4 +16,3 @@
 #   public *;
 #}
 -dontobfuscate
--keepclassmembers class com.fake.android.torchlight.R

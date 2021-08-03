@@ -1,4 +1,4 @@
-package com.fake.android.torchlight
+package de.kb1000.flashlight
 
 import android.appwidget.AppWidgetManager
 import android.content.BroadcastReceiver
@@ -12,7 +12,7 @@ class ToggleReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         // This method is called when the BroadcastReceiver is receiving an Intent broadcast.
-        val camera = Common.blockingTorchlightBind(context)
+        val camera = Common.blockingFlashlightBind(context)
         try {
             camera.toggle()
         } catch (e: RemoteException) {
@@ -20,6 +20,6 @@ class ToggleReceiver : BroadcastReceiver() {
             throw RuntimeException(e)
         }
 
-        TorchlightWidgetCommon.update(context, AppWidgetManager.getInstance(context), AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, TorchlightWidget::class.java)))
+        FlashlightWidgetCommon.update(context, AppWidgetManager.getInstance(context), AppWidgetManager.getInstance(context).getAppWidgetIds(ComponentName(context, FlashlightWidget::class.java)))
     }
 }
