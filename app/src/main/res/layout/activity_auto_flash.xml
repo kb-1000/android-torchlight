@@ -15,10 +15,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:clickable="true"
-        android:onClick="finish"
         android:text="@string/exit"
         android:textColor="@color/colorPrimaryDark"
         android:focusable="true"
-        android:textSize="36sp" />
+        android:textSize="36sp"
+        android:id="@+id/finish"/>
 
 </FrameLayout>

@@ -1,3 +1,4 @@
+@file:Suppress("deprecation") // This is indeed deprecated. And since this is only used on old devices, I indeed don't care.
 package de.kb1000.flashlight.core
 
 import android.annotation.SuppressLint

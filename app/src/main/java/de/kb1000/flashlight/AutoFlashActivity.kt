@@ -2,17 +2,22 @@ package de.kb1000.flashlight
 
 import android.os.Bundle
 import android.os.RemoteException
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import de.kb1000.flashlight.databinding.ActivityAutoFlashBinding
 import de.kb1000.flashlight.v1.IFlashlight
 import timber.log.Timber
 
 class AutoFlashActivity : AppCompatActivity() {
-    private var flashlight: IFlashlight? = null
+    private lateinit var binding: ActivityAutoFlashBinding
+    private lateinit var flashlight: IFlashlight
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_auto_flash)
+        binding = ActivityAutoFlashBinding.inflate(layoutInflater)
+        binding.finish.setOnClickListener { finish() }
+        val view = binding.root
+        setContentView(view)
+
         try {
             flashlight = Common.blockingFlashlightBind(this).retain()
         } catch (e: RemoteException) {
@@ -25,7 +30,7 @@ class AutoFlashActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         try {
-            flashlight!!.set(true)
+            flashlight.set(true)
         } catch (e: RemoteException) {
             Timber.e(e)
             throw RuntimeException(e)
@@ -36,7 +41,7 @@ class AutoFlashActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         try {
-            flashlight!!.set(false)
+            flashlight.set(false)
         } catch (e: RemoteException) {
             Timber.e(e)
             throw RuntimeException(e)
@@ -47,16 +52,11 @@ class AutoFlashActivity : AppCompatActivity() {
     override fun finish() {
         super.finish()
         try {
-            flashlight!!.release()
+            flashlight.release()
         } catch (e: RemoteException) {
             Timber.e(e)
             throw RuntimeException(e)
         }
 
     }
-
-    fun finish(view: View) {
-        finish()
-    }
-
 }
